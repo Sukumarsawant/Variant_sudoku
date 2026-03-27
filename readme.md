@@ -121,12 +121,6 @@ Run server:
 
 Server listens on `http://localhost:8080`.
 
-If you are on Windows and using a prebuilt binary in repo root:
-
-```powershell
-"C:\Users\sawan\p\Variant_sudoku_solver.exe"
-```
-
 ## Frontend (React)
 
 From `sudoku/frontend`:
@@ -179,24 +173,4 @@ Or:
 - Supports visual marking/creation of all variant constraints
 - Sends constraints + grid to backend and renders solution
 
-## Troubleshooting
-
-## Could not reach solver
-
-If frontend shows: `Could not reach solver. Is the server running?`
-
-1. Make sure backend server is started on port `8080`.
-2. Verify the frontend API URL in `frontend/src/App.js` is `http://localhost:8080/solve`.
-3. Confirm no other process is blocking port `8080`.
-
-## CMake cache mismatch (WSL vs Windows paths)
-
-If you switch between WSL and native Windows builds, remove `backend/build` and reconfigure with one environment consistently.
-
-## What can be improved further
-
-- Add unit tests for each `variantCheck` function.
-- Add integration tests for `/solve` API with mixed variants.
-- Add heuristic cell ordering (MRV) to speed up hard puzzles.
-- Add input validation on both frontend and backend for malformed variant payloads.
 
