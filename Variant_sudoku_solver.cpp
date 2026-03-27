@@ -28,14 +28,14 @@ bool isValid(int r, int c, int fill){
     }
     return true;
 }
-bool normal() {
+bool func() {
   for (int r = 0; r < n; ++r) {
     for (int c = 0; c < n; ++c) {
         if(grid[r][c] != 0)  continue;
         for(int fill = 1; fill<=9; ++fill){
             if(isValid(r,c,fill)) {
                 grid[r][c] = fill;
-                if(normal()) return true;
+                if(func()) return true;
                 grid[r][c] = 0; // since goes through isValid
             }
         }
@@ -50,7 +50,7 @@ signed main() {
         for(int j = 0; j < n; ++j)
             cin >> grid[i][j];
     cout<<endl;
-    if(normal()) {
+    if(func()) {
         for(int i = 0; i < n; ++i) {
             for(int j = 0; j < n; ++j)
                 cout << grid[i][j] << " ";
