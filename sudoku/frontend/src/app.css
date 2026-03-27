@@ -190,7 +190,7 @@ body {
   cursor: pointer;
   transition: all 0.15s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .cell:hover {
@@ -232,13 +232,15 @@ body {
 
 /* Variant styling */
 .cell.even {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.3);
+  border: 2px solid var(--primary) !important;
+  box-shadow: inset 0 0 12px rgba(99, 102, 241, 0.4);
 }
 
 .cell.odd {
-  background: rgba(96, 165, 250, 0.15);
-  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.3);
+  border: 2px solid #60a5fa !important;
+  box-shadow: inset 0 0 12px rgba(96, 165, 250, 0.4);
 }
 
 .cell.cage {
@@ -290,6 +292,28 @@ body {
   color: var(--success);
   font-weight: 800;
   animation: slideUp 0.3s ease-out;
+}
+
+.cell-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.even-indicator {
+  background: var(--primary);
+  color: white;
+}
+
+.odd-indicator {
+  background: #60a5fa;
+  color: white;
 }
 
 /* ─────────────────────────────────────────────────────────── */

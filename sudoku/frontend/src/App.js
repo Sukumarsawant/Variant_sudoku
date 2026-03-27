@@ -419,16 +419,18 @@ export default function App() {
                 <button className="mode-btn active" onClick={commitCage}>
                   Add Cage ({currentCage.length} cells)
                 </button>
-              </div>
-              <p className="hint">{cages.length} cage(s) added</p>
-            </div>
-          )}
-
-          {activeVariants.has("thermo") && (
-            <div className="constraint-block">
-              <h3>Thermometers</h3>
-              <p className="hint">Click cells in order (bulb first), then commit.</p>
-              <button className="mode-btn active" onClick={commitThermo}>
+                    <input
+                      type="text"
+                      maxLength={1}
+                      value={solvedGrid ? (solvedGrid[r][c] || "") : val}
+                      onChange={e => handleCell(r, c, e.target.value)}
+                      onClick={e => e.stopPropagation()}
+                      readOnly={!!solvedGrid}
+                      className="cell-input"
+                    />
+                    {mark === "even" && <span className="cell-indicator even-indicator">E</span>}
+                    {mark === "odd" && <span className="cell-indicator odd-indicator">O</span>}
+                  </div>
                 Add Thermo ({currentThermo.length} cells)
               </button>
               <p className="hint">{thermos.length} thermo(s) added</p>
