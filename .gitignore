@@ -1,1 +1,5 @@
 *.exe
+build
+test.sh
+*.json
+node_modules

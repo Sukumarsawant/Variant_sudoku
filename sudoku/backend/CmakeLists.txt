@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.15)
+project(sudoku)
+
+set(CMAKE_CXX_STANDARD 17)
+
+include(FetchContent)
+
+FetchContent_Declare(
+    nlohmann_json
+    URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+)
+FetchContent_MakeAvailable(nlohmann_json)
+
+FetchContent_Declare(
+    httplib
+    GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+    GIT_TAG        v0.15.3
+)
+FetchContent_MakeAvailable(httplib)
+
+set(SOLVER_SOURCES
+    solver.cpp
+    evenodd.cpp
+    killer.cpp
+    thermo.cpp
+    arrow.cpp
+    kropki.cpp
+)
+
+add_executable(sudoku_cli
+    main.cpp
+    ${SOLVER_SOURCES}
+)
+target_link_libraries(sudoku_cli PRIVATE nlohmann_json::nlohmann_json)
+
+add_executable(sudoku_server
+    server.cpp
+    ${SOLVER_SOURCES}
+)
+target_link_libraries(sudoku_server PRIVATE
+    nlohmann_json::nlohmann_json
+    httplib::httplib
+)
