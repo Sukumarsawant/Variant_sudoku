@@ -113,10 +113,29 @@ cmake -S . -B build
 cmake --build build
 ```
 
+If `cmake` is not recognized on Windows, use the full executable path:
+
+```bat
+"C:\Program Files\CMake\bin\cmake.exe" -S . -B build -G "MinGW Makefiles"
+"C:\Program Files\CMake\bin\cmake.exe" --build build -j
+```
+
 Run server:
 
 ```bash
 ./build/sudoku_server
+```
+
+Windows executable:
+
+```bat
+build\sudoku_server.exe
+```
+
+Optional (current terminal only) to make `cmake` available by name:
+
+```powershell
+$env:Path += ";C:\Program Files\CMake\bin"
 ```
 
 Server listens on `http://localhost:8080`.
