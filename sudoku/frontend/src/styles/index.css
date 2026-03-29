@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	color-scheme: light;
+}
+
+:root.dark {
+	color-scheme: dark;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	line-height: 1.4;
+	font-family: Inter, "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+	color: #0f172a;
+}
+
+.dark body {
+	color: #e2e8f0;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+::-webkit-scrollbar {
+	width: 11px;
+	height: 11px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(148, 163, 184, 0.22);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(71, 85, 105, 0.45);
+	border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-track {
+	background: rgba(30, 41, 59, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+	background: rgba(148, 163, 184, 0.5);
+}
+
+@layer components {
+	.card-surface {
+		@apply rounded-2xl border border-slate-200/80 bg-white/90 shadow-soft transition duration-200 dark:border-slate-700/80 dark:bg-slate-900/85;
+	}
+
+	.btn {
+		@apply inline-flex items-center justify-center border border-transparent px-4 py-2 text-sm font-semibold outline-none;
+		border-radius: 999px;
+		letter-spacing: 0.01em;
+		transform: translateY(0) scale(1);
+		box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
+		transition:
+			transform 220ms ease,
+			box-shadow 220ms ease,
+			filter 220ms ease,
+			background 260ms ease,
+			color 220ms ease,
+			border-color 220ms ease;
+	}
+
+	.btn:hover:not(:disabled) {
+		transform: translateY(-2px) scale(1.01);
+		box-shadow: 0 14px 26px rgba(15, 23, 42, 0.15);
+		filter: saturate(1.07);
+	}
+
+	.btn:active:not(:disabled) {
+		transform: translateY(0) scale(0.99);
+		box-shadow: 0 6px 12px rgba(15, 23, 42, 0.16);
+	}
+
+	.btn:focus-visible {
+		box-shadow:
+			0 0 0 3px rgba(34, 211, 238, 0.3),
+			0 12px 24px rgba(15, 23, 42, 0.16);
+	}
+
+	.btn:disabled {
+		@apply cursor-not-allowed opacity-50;
+	}
+
+	.btn-primary {
+		color: #ffffff;
+		background: linear-gradient(135deg, #0891b2 0%, #0284c7 55%, #0369a1 100%);
+	}
+
+	.btn-primary:hover:not(:disabled) {
+		background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 55%, #0284c7 100%);
+	}
+
+	.btn-secondary {
+		@apply border border-slate-300 bg-white text-slate-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100;
+	}
+
+	.btn-secondary:hover:not(:disabled) {
+		background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+	}
+
+	.dark .btn-secondary:hover:not(:disabled) {
+		background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+	}
+
+	.btn-ghost {
+		@apply border border-transparent bg-slate-900/10 text-slate-700 dark:bg-slate-100/10 dark:text-slate-100;
+	}
+
+	.btn-ghost:hover:not(:disabled) {
+		@apply bg-slate-900/20 dark:bg-slate-100/20;
+	}
+
+	.btn-danger {
+		color: #ffffff;
+		background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
+	}
+
+	.btn-danger:hover:not(:disabled) {
+		background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
+	}
+
+	.btn-success {
+		color: #ffffff;
+		background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+	}
+
+	.btn-success:hover:not(:disabled) {
+		background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+	}
+
+	.btn-accent {
+		color: #ffffff;
+		background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+	}
+
+	.btn-accent:hover:not(:disabled) {
+		background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+	}
+}

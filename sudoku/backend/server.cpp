@@ -1,3 +1,5 @@
+#include <httplib.h>
+#include <nlohmann/json.hpp>
 #include "common.h"
 #include "solver.h"
 #include "evenodd.h"
@@ -5,8 +7,6 @@
 #include "thermo.h"
 #include "arrow.h"
 #include "kropki.h"
-#include <nlohmann/json.hpp>
-#include <httplib.h>
 
 using json = nlohmann::json;
 
