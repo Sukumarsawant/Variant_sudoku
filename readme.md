@@ -102,9 +102,15 @@ Then the production code was split into modular `.h + .cpp` units for CMake buil
 └─ readme.md
 ```
 
-## Build and Run
+## Initialize Backend and Frontend
 
-## Backend (C++)
+Prerequisites:
+
+- CMake 3.15+
+- A C++17 compiler (for example, MinGW g++)
+- Node.js 18+ and npm
+
+### 1) Initialize and run backend (C++)
 
 From `sudoku/backend`:
 
@@ -113,43 +119,49 @@ cmake -S . -B build
 cmake --build build
 ```
 
-If `cmake` is not recognized on Windows, use the full executable path:
+If `cmake` is not recognized on Windows, use:
 
 ```bat
 "C:\Program Files\CMake\bin\cmake.exe" -S . -B build -G "MinGW Makefiles"
 "C:\Program Files\CMake\bin\cmake.exe" --build build -j
 ```
 
-Run server:
+Run backend server:
 
 ```bash
 ./build/sudoku_server
 ```
 
 Windows executable:
-
+use thissss
 ```bat
 build\sudoku_server.exe
 ```
 
-Optional (current terminal only) to make `cmake` available by name:
+Backend API runs on `http://localhost:8080`.
 
-```powershell
-$env:Path += ";C:\Program Files\CMake\bin"
-```
-
-Server listens on `http://localhost:8080`.
-
-## Frontend (React)
+### 2) Initialize and run frontend (Vite + React)
 
 From `sudoku/frontend`:
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
-Frontend runs on `http://localhost:3000` and calls backend `POST /solve`.
+By default, Vite runs on `http://localhost:5173` and the frontend calls backend `POST /solve` at `http://localhost:8080`.
+
+Optional: create `.env` in `sudoku/frontend` to override backend URL:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+### 3) Recommended startup order
+
+1. Start backend server.
+2. Start frontend dev server.
+3. Open the frontend URL shown by Vite.
 
 ## API Contract
 
